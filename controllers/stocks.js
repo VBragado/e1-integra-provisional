@@ -1,17 +1,26 @@
-const { Stock } = require('../models/order');
+const axios = require('axios');
 
 const getStocks = async (req, res) => {
   try {
-    // Retrieve the total stock for each SKU from the database
-    const stocks = await Stock.findAll({
-      attributes: ['sku', [sequelize.fn('sum', sequelize.col('cantidad')), 'total']],
-      group: 'sku',
-    });
+    // Make a GET request to retrieve stores information
+    const storesResponse = await axios.get('https://dev.api-proyecto.2023-1.tallerdeintegracion.cl/warehouse/stores');
+    const storesData = storesResponse.data;
 
-    // Format the response as an array of objects
-    const formattedStocks = stocks.map((stock) => ({
-      sku: stock.sku,
-      total: stock.get('total'),
+    // Find the first store with buffer = false
+    const targetStore = storesData.find(store => store.buffer === false && store.kitchen === false);
+
+    if (!targetStore) {
+      throw new Error('No store found with buffer = false and kitchen = false');
+    }
+
+    // Make a GET request to retrieve inventory information for the target store
+    const inventoryResponse = await axios.get(`https://dev.api-proyecto.2023-1.tallerdeintegracion.cl/warehouse/stores/${targetStore._id}/inventory`);
+    const inventoryData = inventoryResponse.data;
+
+    // Transform the inventory data to match the desired format
+    const formattedStocks = inventoryData.map(item => ({
+      sku: item.sku,
+      total: item.quantity,
     }));
 
     // Send the response
@@ -26,3 +35,4 @@ const getStocks = async (req, res) => {
 module.exports = {
   getStocks,
 };
+
