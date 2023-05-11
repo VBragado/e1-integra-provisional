@@ -1,13 +1,14 @@
 const fetch = require("node-fetch");
 
-const AuthorizationToken = function (req, res) {
+const AuthorizationToken = async function (req, res) {
+
   const url = "https://dev.api-proyecto.2023-1.tallerdeintegracion.cl/warehouse/auth";
   const data = {
     group: 18,
     secret: "DtyTZCeKVv9Bj[AN6_"
   };
-
-fetch(url, {
+  return new Promise(resolve => {
+  fetch(url, {
   method: "POST",
   body: JSON.stringify(data),
   headers: {
@@ -23,10 +24,13 @@ fetch(url, {
   })
   .then(result => {
     const token = result.token;
-    console.log("Token de autorización:", token);
+    process.env.TOKEN = token;
+    console.log("Token de autorización obtenido");
+    resolve();
   })
   .catch(error => {
     console.error("Error:", error);
+  });
   });
 }; 
 module.exports = {
