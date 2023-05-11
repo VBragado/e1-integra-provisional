@@ -19,7 +19,7 @@ const createOrder = async (req, res) => {
       urlNotificacion,
       estado: 'recibida',
     });
-    res.status(201).json(order);
+    res.status(201).json(order.toJSON({ exclude: ['createdAt', 'updatedAt'] })); // REVISAR
   } catch (err) {
     console.error(err);
     res.status(500).json({ mensaje: 'Server error' });
@@ -29,10 +29,17 @@ const createOrder = async (req, res) => {
 
 // Servicio de recepción de actualización de orden de compra
 const updateOrder = async (req, res) => {
-  const { estado } = req.body;
+  const { nuevoEstado } = req.body;
   const orderId = req.params.id;
   try {
-    
+    // check if the order exists
+    const existingOrder = await Order.findOne({ where: { id: orderId } });
+    if (!existingOrder) {
+      return res.status(404).end(); //revisar .end
+    }
+    // update the order's estado attribute
+    await Order.update({ estado: nuevoEstado }, { where: { id: orderId } });
+    res.status(204).end(); //revisar .end
   } catch (err) {
     console.error(err);
     res.status(500).json({ mensaje: 'Server error' });

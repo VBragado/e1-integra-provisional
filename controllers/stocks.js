@@ -15,7 +15,7 @@ const getStocks = async (req, res) => {
       },
     });
     const storesData = storesResponse.data;
-    console.log(token); //CONSOLE LOG
+    //console.log(token); //CONSOLE LOG
 
     // Find the first store with buffer = false
     const targetStore = storesData.find(store => store.buffer === false && store.kitchen === false);
