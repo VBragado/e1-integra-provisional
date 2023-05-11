@@ -7,7 +7,7 @@ const db = require('./config/database'); // falta implementar
 // Set up middleware, such as body-parser and cors
 
 // Set up routes
-app.use('/url_grupo/stocks', stocksRouter);
+app.use('/stocks', stocksRouter);
 //app.use('/url_grupo/ordenes-compra', ordersRouter);
 
 const PORT = 3000;

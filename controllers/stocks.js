@@ -3,7 +3,9 @@ const axios = require('axios');
 const getStocks = async (req, res) => {
   try {
     // Make a POST request to retrieve the authorization token
-    const authResponse = await axios.post('https://dev.api-proyecto.2023-1.tallerdeintegracion.cl/warehouse/auth', {});
+    const authResponse = await axios.post('https://dev.api-proyecto.2023-1.tallerdeintegracion.cl/warehouse/auth', 
+    {group: 18, secret: 'DtyTZCeKVv9Bj[AN6_'}
+    );
     const token = authResponse.data.token;
 
     // Make a GET request to retrieve stores information
@@ -13,7 +15,7 @@ const getStocks = async (req, res) => {
       },
     });
     const storesData = storesResponse.data;
-    console.log(token);
+    console.log(token); //CONSOLE LOG
 
     // Find the first store with buffer = false
     const targetStore = storesData.find(store => store.buffer === false && store.kitchen === false);
