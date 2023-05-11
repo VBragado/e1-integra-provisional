@@ -1,6 +1,6 @@
 // ESTE MODELO NO SE NECESITA, HACEMOS GET /ordenes/:idOrden
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/database').sequelize;
 
 const Order = sequelize.define('Order', {
   id: {
