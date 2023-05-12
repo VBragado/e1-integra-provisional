@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<head>
+  <title>APItito RESTaurant Franquicia 18</title>
+  <style>
+    body {
+      background-color: #222;
+      color: #00FFFF;
+      font-family: sans-serif;
+    }
+
+    /* Estilos para la tabla */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      color: #00FFFF;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #333;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>APItito RESTaurant Franquicia 18</h1>
+  <h1>Inventario</h1>
+
+  <table id="tabla-dashboard">
+    <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Las filas se generarán dinámicamente con JavaScript -->
+    </tbody>
+  </table>
+  <script>
+    // Obtener la referencia a la tabla
+    console.log('Cargando dashboard...');
+    var tabla = document.getElementById('tabla-dashboard');
+    console.log('Ejecutando getUtilsStock...');
+    fetch('/stocks')
+      .then(response => response.json())
+      .then(data => {
+        // Iterar sobre la lista de objetos y generar las filas
+        data.forEach(objeto => {
+          var fila = document.createElement('tr');
+
+          var celdaSku = document.createElement('td');
+          celdaSku.textContent = objeto.sku;
+          fila.appendChild(celdaSku);
+
+          var celdaTotal = document.createElement('td');
+          celdaTotal.textContent = objeto.total;
+          fila.appendChild(celdaTotal);
+
+          tabla.appendChild(fila);
+        });
+      })
+      .catch(error => {
+        console.log('Error al obtener los objetos:', error);
+      });
+  </script>
+</body>
+</html>

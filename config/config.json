@@ -2,7 +2,7 @@
   "development": {
     "username": "projecttdi",
     "password": "1029384756",
-    "database": "mytestdb2",
+    "database": "mytestdb",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
