@@ -5,7 +5,9 @@ var Sequelize = require('sequelize');
 /**
  * Actions summary:
  *
+ * createTable "Formulas", deps: []
  * createTable "Orders", deps: []
+ * createTable "Products", deps: []
  * createTable "Stocks", deps: []
  *
  **/
@@ -13,12 +15,54 @@ var Sequelize = require('sequelize');
 var info = {
     "revision": 1,
     "name": "noname",
-    "created": "2023-05-12T04:48:51.903Z",
+    "created": "2023-05-12T06:00:44.953Z",
     "comment": ""
 };
 
 var migrationCommands = function(transaction) {
     return [{
+            fn: "createTable",
+            params: [
+                "Formulas",
+                {
+                    "id": {
+                        "type": Sequelize.STRING,
+                        "field": "id",
+                        "primaryKey": true,
+                        "allowNull": false
+                    },
+                    "Producto": {
+                        "type": Sequelize.STRING,
+                        "field": "Producto",
+                        "allowNull": false
+                    },
+                    "Ingrediente": {
+                        "type": Sequelize.STRING,
+                        "field": "Ingrediente",
+                        "allowNull": false
+                    },
+                    "Cantidad": {
+                        "type": Sequelize.INTEGER,
+                        "field": "Cantidad",
+                        "allowNull": false
+                    },
+                    "createdAt": {
+                        "type": Sequelize.DATE,
+                        "field": "createdAt",
+                        "allowNull": false
+                    },
+                    "updatedAt": {
+                        "type": Sequelize.DATE,
+                        "field": "updatedAt",
+                        "allowNull": false
+                    }
+                },
+                {
+                    "transaction": transaction
+                }
+            ]
+        },
+        {
             fn: "createTable",
             params: [
                 "Orders",
@@ -57,6 +101,53 @@ var migrationCommands = function(transaction) {
                     "estado": {
                         "type": Sequelize.STRING,
                         "field": "estado",
+                        "allowNull": false
+                    },
+                    "createdAt": {
+                        "type": Sequelize.DATE,
+                        "field": "createdAt",
+                        "allowNull": false
+                    },
+                    "updatedAt": {
+                        "type": Sequelize.DATE,
+                        "field": "updatedAt",
+                        "allowNull": false
+                    }
+                },
+                {
+                    "transaction": transaction
+                }
+            ]
+        },
+        {
+            fn: "createTable",
+            params: [
+                "Products",
+                {
+                    "id": {
+                        "type": Sequelize.STRING,
+                        "field": "id",
+                        "primaryKey": true,
+                        "allowNull": false
+                    },
+                    "SKU": {
+                        "type": Sequelize.STRING,
+                        "field": "SKU",
+                        "allowNull": false
+                    },
+                    "LoteProduccion": {
+                        "type": Sequelize.INTEGER,
+                        "field": "LoteProduccion",
+                        "allowNull": false
+                    },
+                    "Costo": {
+                        "type": Sequelize.INTEGER,
+                        "field": "Costo",
+                        "allowNull": false
+                    },
+                    "Tiempo": {
+                        "type": Sequelize.INTEGER,
+                        "field": "Tiempo",
                         "allowNull": false
                     },
                     "createdAt": {
@@ -132,7 +223,19 @@ var migrationCommands = function(transaction) {
 var rollbackCommands = function(transaction) {
     return [{
             fn: "dropTable",
+            params: ["Formulas", {
+                transaction: transaction
+            }]
+        },
+        {
+            fn: "dropTable",
             params: ["Orders", {
+                transaction: transaction
+            }]
+        },
+        {
+            fn: "dropTable",
+            params: ["Products", {
                 transaction: transaction
             }]
         },

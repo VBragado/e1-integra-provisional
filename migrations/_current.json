@@ -1,5 +1,42 @@
 {
     "tables": {
+        "Formulas": {
+            "tableName": "Formulas",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "id",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Producto": {
+                    "allowNull": false,
+                    "field": "Producto",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Ingrediente": {
+                    "allowNull": false,
+                    "field": "Ingrediente",
+                    "seqType": "Sequelize.STRING"
+                },
+                "Cantidad": {
+                    "allowNull": false,
+                    "field": "Cantidad",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
         "Orders": {
             "tableName": "Orders",
             "schema": {
@@ -38,6 +75,48 @@
                     "allowNull": false,
                     "field": "estado",
                     "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Products": {
+            "tableName": "Products",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "id",
+                    "seqType": "Sequelize.STRING"
+                },
+                "SKU": {
+                    "allowNull": false,
+                    "field": "SKU",
+                    "seqType": "Sequelize.STRING"
+                },
+                "LoteProduccion": {
+                    "allowNull": false,
+                    "field": "LoteProduccion",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Costo": {
+                    "allowNull": false,
+                    "field": "Costo",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "Tiempo": {
+                    "allowNull": false,
+                    "field": "Tiempo",
+                    "seqType": "Sequelize.INTEGER"
                 },
                 "createdAt": {
                     "allowNull": false,
