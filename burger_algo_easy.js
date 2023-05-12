@@ -12,6 +12,15 @@ const Formulas = db.Formula;
 
 let total = 0;
 const burgerId = "6b6bd5ce9f";
+const ing1 = "e70328935a";
+const q1 = 12;
+const ing2 = "1384839fbe";
+const ing3 = "018aa592b1";
+const ing4 = "85552371f9";
+const ing5 = "b8c943dcd7";
+
+elements = {};
+for (element in elements) {
 
 for (let i = 0; i < items.length; i++) {
     try {
@@ -23,4 +32,5 @@ for (let i = 0; i < items.length; i++) {
       console.error(error);
     }
   }
-  
+
+}
