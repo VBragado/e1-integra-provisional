@@ -15,12 +15,33 @@ function getLowestZ(lote, quantity) {
     return Z;
   }
 
+// Temporary fix
+// Make a POST request to retrieve the authorization token
+const authResponse = await axios.post('https://dev.api-proyecto.2023-1.tallerdeintegracion.cl/warehouse/auth', 
+{group: 18, secret: 'DtyTZCeKVv9Bj[AN6_'} // ACTUUALMENTE EL DE DESARROLLO. CAMBIAR
+);
+const token = authResponse.data.token;
+// Make a GET request to retrieve stores information
+const storesResponse = await axios.get('https://dev.api-proyecto.2023-1.tallerdeintegracion.cl/warehouse/stores', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const storesData = storesResponse.data;
+  // Find the first store with buffer = false
+  const storeId = storesData.find(store => store.buffer === false && store.kitchen === false);
+  // Find kitchen
+  const kitchenId = storesData.find(store.kitchen === true);
+// Temporary fix
+
+
 let total = 0;
+
 // FIX DESDE AQUI
-const token; // GET TOKEN
-const storeId; // GET STORE ID
-const kitchenId; // GET KITCHEN ID
-const burgerId; // '6b6bd5ce9f'
+//const token = authResponse.data.token;; // GET TOKEN
+//const storeId; // GET STORE ID
+//const kitchenId; // GET KITCHEN ID
+const burgerId = "6b6bd5ce9f"; // "6b6bd5ce9f"
 const groupId; // CUAL ES???
 // HASTA ACA
 
