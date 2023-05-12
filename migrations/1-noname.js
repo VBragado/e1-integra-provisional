@@ -15,7 +15,7 @@ var Sequelize = require('sequelize');
 var info = {
     "revision": 1,
     "name": "noname",
-    "created": "2023-05-12T06:00:44.953Z",
+    "created": "2023-05-12T07:05:31.659Z",
     "comment": ""
 };
 
@@ -44,16 +44,6 @@ var migrationCommands = function(transaction) {
                     "Cantidad": {
                         "type": Sequelize.INTEGER,
                         "field": "Cantidad",
-                        "allowNull": false
-                    },
-                    "createdAt": {
-                        "type": Sequelize.DATE,
-                        "field": "createdAt",
-                        "allowNull": false
-                    },
-                    "updatedAt": {
-                        "type": Sequelize.DATE,
-                        "field": "updatedAt",
                         "allowNull": false
                     }
                 },
@@ -148,16 +138,6 @@ var migrationCommands = function(transaction) {
                     "Tiempo": {
                         "type": Sequelize.INTEGER,
                         "field": "Tiempo",
-                        "allowNull": false
-                    },
-                    "createdAt": {
-                        "type": Sequelize.DATE,
-                        "field": "createdAt",
-                        "allowNull": false
-                    },
-                    "updatedAt": {
-                        "type": Sequelize.DATE,
-                        "field": "updatedAt",
                         "allowNull": false
                     }
                 },

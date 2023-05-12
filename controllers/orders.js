@@ -1,6 +1,9 @@
-const { Order } = require('../models/order'); // import the Order model
+//const { Order } = require('../models/order'); // import the Order model
+const db = require('../models');
+const Order = db.Order;
 // Servicio de recepción de órdenes de compra
 const createOrder = async (req, res) => {
+  console.log(req.body);
   const { cliente, sku, fechaEntrega, cantidad, urlNotificacion } = req.body;
   const orderId = req.params.id;
   try {
@@ -30,6 +33,7 @@ const createOrder = async (req, res) => {
 // Servicio de recepción de actualización de orden de compra
 const updateOrder = async (req, res) => {
   const { nuevoEstado } = req.body;
+  console.log(req.body);
   const orderId = req.params.id;
   try {
     // check if the order exists
@@ -40,6 +44,7 @@ const updateOrder = async (req, res) => {
     // update the order's estado attribute
     await Order.update({ estado: nuevoEstado }, { where: { id: orderId } });
     res.status(204).end(); //revisar .end
+    console.log(nuevoEstado);
   } catch (err) {
     console.error(err);
     res.status(500).json({ mensaje: 'Server error' });

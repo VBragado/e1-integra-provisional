@@ -9,11 +9,12 @@ const { getStores } = require('./utils/stores');
 const { callTest } = require('./utils/test1');
 
 // Set up middleware, such as body-parser and cors
+app.use(express.json());
 
 // Set up routes
 
 app.use('/stocks', stocksRouter);
-//app.use('/url_grupo/ordenes-compra', ordersRouter);
+app.use('/ordenes-compra', ordersRouter);
 
 
 const PORT = 3000;

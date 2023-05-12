@@ -33,6 +33,7 @@ const {
     }, {
       sequelize,
       modelName: 'Formula',
+      timestamps: false
     });
     return Formula;
   };

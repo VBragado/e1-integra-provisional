@@ -37,6 +37,7 @@ const {
     }, {
       sequelize,
       modelName: 'Product',
+      timestamps: false
     });
     return Product;
   };
