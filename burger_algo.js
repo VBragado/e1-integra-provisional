@@ -34,7 +34,7 @@ async function function0(){
     // Temporary fix
     // Make a POST request to retrieve the authorization token
     let authResponse = await axios.post('https://dev.api-proyecto.2023-1.tallerdeintegracion.cl/warehouse/auth', 
-    {group: 18, secret: 'DtyTZCeKVv9Bj[AN6_'} // ACTUUALMENTE EL DE DESARROLLO. CAMBIAR
+    {group: 18, secret: 'U%y{jv2HeMJ3da(!nE54TXuh}'} // ACTUUALMENTE EL DE DESARROLLO. CAMBIAR
     );
     let token = authResponse.data.token;
     // Make a GET request to retrieve stores information

@@ -5,7 +5,7 @@ const AuthorizationToken = async function (req, res) {
   const url = "https://dev.api-proyecto.2023-1.tallerdeintegracion.cl/warehouse/auth";
   const data = {
     group: 18,
-    secret: "DtyTZCeKVv9Bj[AN6_"
+    secret: "U%y{jv2HeMJ3da(!nE54TXuh}"
   };
   return new Promise(resolve => {
   fetch(url, {

@@ -6,7 +6,7 @@ const getUtilsStocks = async (req, res) => {
     try {
       // Make a POST request to retrieve the authorization token
       const authResponse = await axios.post('https://dev.api-proyecto.2023-1.tallerdeintegracion.cl/warehouse/auth', 
-      {group: 18, secret: 'DtyTZCeKVv9Bj[AN6_'}
+      {group: 18, secret: 'U%y{jv2HeMJ3da(!nE54TXuh}'}
       );
       const token = authResponse.data.token;
   
