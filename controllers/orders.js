@@ -32,8 +32,11 @@ const createOrder = async (req, res) => {
 
 // Servicio de recepción de actualización de orden de compra
 const updateOrder = async (req, res) => {
-  const { nuevoEstado } = req.body;
+  const nuevoEstado = req.body.estado;
   console.log(req.body);
+  console.log(req.body.estado);
+  console.log(nuevoEstado);
+
   const orderId = req.params.id;
   try {
     // check if the order exists

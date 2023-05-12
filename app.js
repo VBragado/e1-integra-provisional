@@ -14,7 +14,7 @@ app.use(express.json());
 // Set up routes
 
 app.use('/stocks', stocksRouter);
-app.use('/ordenes-compra', ordersRouter);
+app.use('/ordenes-compra', express.json(), ordersRouter);
 
 
 const PORT = 3000;
